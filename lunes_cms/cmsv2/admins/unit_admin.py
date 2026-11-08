@@ -250,6 +250,7 @@ class UnitAdmin(AreaContentAdmin):
         js = [
             "js/csrf.js",
             "js/unit_icon_asset_config.js",
+            "js/unitword_image_asset_config.js",
             "js/asset_manager.js",
             "js/generate_example_sentence.js",
         ]

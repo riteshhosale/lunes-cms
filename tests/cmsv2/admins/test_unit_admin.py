@@ -35,6 +35,18 @@ def unit_admin() -> UnitAdmin:
     return UnitAdmin(Unit, admin.site)
 
 
+def test_media_loads_unitword_image_config_before_asset_manager(
+    unit_admin: UnitAdmin,
+) -> None:
+    """The Unit inline renders unit-word image controls that need this config."""
+    media_html = str(unit_admin.media)
+    config = "unitword_image_asset_config.js"
+    manager = "asset_manager.js"
+
+    assert config in media_html
+    assert media_html.index(config) < media_html.index(manager)
+
+
 def _post_request(request_factory: RequestFactory, data: dict) -> HttpRequest:
     """Build a POST request with a working messages store for admin actions."""
     request = request_factory.post("/", data)
